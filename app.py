@@ -50,4 +50,11 @@ st.subheader("Répartition des sentiments")
 st.altair_chart(
     alt.Chart(sentiment_count).mark_arc(innerRadius=50).encode(
         theta="Total", color="Sentiment", tooltip=['Sentiment', 'Total']
-    ), use_container_width
+    ), use_container_width=True
+)
+
+st.subheader("Exemples de tweets analysés")
+st.dataframe(df, use_container_width=True)
+
+st.markdown("""
+*Ces tweets sont simulés à
