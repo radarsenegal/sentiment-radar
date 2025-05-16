@@ -1,5 +1,5 @@
 streamlit
-snscrape
+snscrape==0.4.3.20220106
 pandas
 textblob
 altair
