@@ -1,0 +1,6 @@
+streamlit
+snscrape
+pandas
+textblob
+altair
+matplotlib
