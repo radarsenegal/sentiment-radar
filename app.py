@@ -5,6 +5,7 @@ import altair as alt
 
 st.set_page_config(page_title="SentimentRadar - Lamine Niang", layout="centered")
 st.title("SentimentRadar : Opinion sur Lamine Niang")
+
 st.markdown("""
 Ce tableau de bord analyse les sentiments d’un échantillon de tweets simulés sur **Lamine Niang**, Directeur Général du journal *Le Soleil*.
 """)
@@ -41,7 +42,7 @@ def get_sentiment(text):
 
 df["Sentiment"] = df["Contenu"].apply(get_sentiment)
 
-# Répartition des sentiments
+# Résumé
 sentiment_count = df["Sentiment"].value_counts().reset_index()
 sentiment_count.columns = ["Sentiment", "Total"]
 
@@ -49,12 +50,16 @@ sentiment_count.columns = ["Sentiment", "Total"]
 st.subheader("Répartition des sentiments")
 st.altair_chart(
     alt.Chart(sentiment_count).mark_arc(innerRadius=50).encode(
-        theta="Total", color="Sentiment", tooltip=['Sentiment', 'Total']
-    ), use_container_width=True
+        theta="Total",
+        color="Sentiment",
+        tooltip=["Sentiment", "Total"]
+    ),
+    use_container_width=True
 )
 
 st.subheader("Exemples de tweets analysés")
 st.dataframe(df, use_container_width=True)
 
 st.markdown("""
-*Ces tweets sont simulés à
+*Ces tweets sont simulés à titre d’exemple pour démontrer le fonctionnement de l’outil.*
+""")
